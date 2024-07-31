@@ -1,4 +1,8 @@
-FROM ubuntu:latest
+FROM python:3.8.3
 LABEL authors="HP"
-
-ENTRYPOINT ["top", "-b"]
+WORKDIR /app
+ADD requirements.txt .
+RUN pip install -r requirements.txt
+ADD . .
+EXPOSE 5000
+CMD python routes.py
